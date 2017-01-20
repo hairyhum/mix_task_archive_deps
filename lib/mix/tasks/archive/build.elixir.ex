@@ -66,19 +66,8 @@ defmodule Mix.Tasks.Archive.Build.Elixir do
   end
 
   defp get_applications() do
-    # TODO: add deps applications
-    project = Mix.Project.get()
-    applications = if function_exported?(project, :application, 0) do
-      project_application = project.application()
-      if Keyword.keyword?(project_application) do
-        project_application[:applications] || []
-      else
-        []
-      end
-    else
-      []
-    end
-    get_applications_recursively(applications)
+    application = Mix.Project.config[:app]
+    get_applications_recursively([application])
   end
 
   defp get_applications_recursively(applications) do
