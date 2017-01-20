@@ -1,0 +1,226 @@
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.14.5">
+    <title>Mix.Tasks.Archive.Build.Elixir – MixTaskArchiveDeps v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-a07cea761b.css" />
+    
+    <script src="dist/sidebar_items-f55dfa393f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>if(localStorage.getItem('night-mode')) document.body.className += ' night-mode';</script>
+
+    <div class="main">
+<button class="sidebar-toggle">
+  <i class="icon-menu"></i>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        MixTaskArchiveDeps
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <div class="sidebar-search">
+    <i class="icon-search"></i>
+    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" />
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">MixTaskArchiveDeps v0.1.0</small>
+        Mix.Tasks.Archive.Build.Elixir
+        
+        
+          <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L20" title="View Source" class="view-source" rel="help">
+            <i class="icon-code"></i>
+          </a>
+        
+      </h1>
+
+      
+        <section id="moduledoc">
+          <p>Builds each elixir project required by the project into
+archives according to the specification of the
+<a href="http://www.erlang.org/doc/man/code.html">Erlang Archive Format</a>.</p>
+<p>This task goal is to create packages. which could
+be used from Erlang environment without Elixir installation.</p>
+<p>The archives will be created in the “archives” subdirectory of
+the project build directory by default, unless an argument <code class="inline">-o</code> is
+provided with the directory name.</p>
+<p>The task will create archives for applications, referenced by the project
+and it’s dependencies, unless <code class="inline">-a</code> flag is specified.</p>
+<h2 id="module-command-line-options" class="section-heading">
+  <a href="#module-command-line-options" class="hover-link"><i class="icon-link"></i></a>
+  Command line options
+</h2>
+
+<ul>
+<li><p><code class="inline">-o|--destination</code> - specifies output directory name.
+Defaults to BUILD_DIR/archives</p>
+</li>
+<li><p><code class="inline">-a|--all_applications</code> - specifies if all elixir applications
+should be archived. Defaults to <code class="inline">false</code></p>
+</li>
+</ul>
+
+        </section>
+      
+
+      
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <i class="icon-link"></i>
+            </a>
+            Summary
+          </h1>
+          
+
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_archives/1">build_archives(opts)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#run/1">run(argv)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>A task needs to implement <code class="inline">run</code> which receives
+a list of command line args</p>
+</div>
+  
+</div>
+
+  </div>
+
+
+          
+
+          
+
+        </section>
+      
+
+      
+
+      
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <i class="icon-link"></i>
+            </a>
+            Functions
+          </h1>
+          <div class="detail" id="build_archives/1">
+  
+  <div class="detail-header">
+    <a href="#build_archives/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">build_archives(opts)</span>
+    
+      <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L59" class="view-source" rel="help" title="View Source">
+       <i class="icon-code"></i>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="run/1">
+  
+  <div class="detail-header">
+    <a href="#run/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">run(argv)</span>
+    
+      <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L54" class="view-source" rel="help" title="View Source">
+       <i class="icon-code"></i>
+     </a>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>run(<a href="https://hexdocs.pm/elixir/OptionParser.html#t:argv/0">OptionParser.argv</a>) :: :ok</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>A task needs to implement <code class="inline">run</code> which receives
+a list of command line args.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/mix/Mix.Task.html#c:run/1"><code class="inline">Mix.Task.run/1</code></a>.</p>
+
+  </section>
+</div>
+
+        </section>
+      
+
+      
+
+      
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.14.5),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle" />
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-4aef34ad5f.js"></script>
+  </body>
+</html>
+

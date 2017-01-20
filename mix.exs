@@ -26,7 +26,7 @@ defmodule MixTaskArchiveDeps.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     description: "Mix task to create archives for a project dependencies and elixit itslef",
+     description: "Mix task to create archives for a project dependencies and elixir itself",
      package: package(),
      deps: deps(),
      name: "MixTaskArchiveDeps",
