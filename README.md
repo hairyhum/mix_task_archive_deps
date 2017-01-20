@@ -1,19 +1,26 @@
-# MixTaskDepsArchive
+# Mix tasks to archive project dependencies
 
-**TODO: Add description**
+This repo contains Mix tasks to create `*.ez` archives for a project dependencies.
+
+There are three new tasks:
+
+- `archive.build.deps` - build archives for a project dependencies
+- `archive.build.elixir` - build archives with Elixir and Elixir apps (like `mix` or `logger`)
+- `archive.build.all` - build dependencies archives and a project archive
+
+The tasks are intended to use to create no-dependency distributions of Elixir apps,
+that can be run from Erlang runtime without installing Elixir and recompiling apps.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mix_task_deps_archive` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `mix_task_archive_deps`
+to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:mix_task_deps_archive, "~> 0.1.0"}]
+  [{:mix_task_archive_deps, "~> 0.1.0"}]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/mix_task_deps_archive](https://hexdocs.pm/mix_task_deps_archive).
+The docs can be found at [https://hexdocs.pm/mix_task_archive_deps](https://hexdocs.pm/mix_task_archive_deps).
 

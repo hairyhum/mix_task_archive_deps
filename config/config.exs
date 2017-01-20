@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :mix_task_deps_archive, key: :value
+#     config :mix_task_archive_deps, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:mix_task_deps_archive, :key)
+#     Application.get_env(:mix_task_archive_deps, :key)
 #
 # Or configure a 3rd-party app:
 #
