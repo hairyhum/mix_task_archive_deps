@@ -22,5 +22,11 @@ def deps do
 end
 ```
 
+Alternatively the package can be installed as an archive from release:
+
+```
+mix archive.install https://github.com/hairyhum/mix_task_archive_deps/releases/download/0.1.0/mix_task_archive_deps-0.1.0.ez
+```
+
 The docs can be found at [https://hexdocs.pm/mix_task_archive_deps](https://hexdocs.pm/mix_task_archive_deps).
 
