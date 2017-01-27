@@ -57,22 +57,31 @@ defmodule Mix.Tasks.Archive.Build.Elixir do
   end
 
   def build_archives(opts) do
+    list(opts)
+    |>  Enum.each(fn({lib_dir, archive_path}) ->
+          Mix.Tasks.Archive.Build.run(["-i", lib_dir,
+                                       "-o", archive_path])
+        end)
+
+    :ok
+  end
+
+  def list_archives(opts) do
+    list(opts)
+    |> Enum.map(fn({_, archive_path}) -> archive_path end)
+  end
+
+  defp list(opts) do
     destination = Mix.Archive.Build.Helpers.destination(opts)
     all_applications = opts[:all_applications] || false
 
-    elixir_lib_dir = :code.lib_dir(:elixir)
-    elixir_archive_name = "elixir-#{Application.spec(:elixir, :vsn)}.ez"
-    elixir_archive_path = Path.join([destination, elixir_archive_name])
-    Mix.Tasks.Archive.Build.run(["-i", elixir_lib_dir,
-                                 "-o", elixir_archive_path])
     get_required_apps(all_applications)
-    |> Enum.each(fn(elixir_app) ->
-      lib_dir = :code.lib_dir(elixir_app)
-      archive_name = "#{elixir_app}-#{Application.spec(elixir_app, :vsn)}.ez"
-      archive_path = Path.join([destination, archive_name])
-      Mix.Tasks.Archive.Build.run(["-i", lib_dir,
-                                   "-o", archive_path])
-    end)
+    |>  Enum.map(fn(elixir_app) ->
+          lib_dir = :code.lib_dir(elixir_app)
+          archive_name = "#{elixir_app}-#{Application.spec(elixir_app, :vsn)}.ez"
+          archive_path = Path.join([destination, archive_name])
+          {lib_dir, archive_path}
+        end)
   end
 
   defp get_required_apps(true) do

@@ -17,29 +17,12 @@
 ##
 ##
 
-defmodule Mix.Tasks.Archive.Build.All do
+defmodule Mix.Tasks.Archive.Build.All.List do
   use Mix.Task
 
-  @shortdoc "Archives the project and all it's dependencies into .ez files"
+  @shortdoc "Lists .ez archives to be built with Archive.Build.All"
 
   @moduledoc """
-  Builds each dependency required by the project and the project itself into
-  archives according to the specification of the
-  [Erlang Archive Format](http://www.erlang.org/doc/man/code.html).
-
-  This task goal is to create packages. which could
-  be used from Erlang environment without Elixir installation.
-
-  The archives will be created in the "archives" subdirectory of
-  the project build directory by default, unless an argument `-o` is
-  provided with the directory name.
-
-  The task will create archives for the project application,
-  and all it's dependencies.
-
-  If `-e` flag is specified, it will also archive elixir core applications
-  referenced by the project and all it's dependencies.
-
   ## Command line options
 
   * `-o|--destination` - specifies output directory name.
@@ -47,25 +30,37 @@ defmodule Mix.Tasks.Archive.Build.All do
 
   * `-e|--elixir` - specifies if all elixir applications
       should be archived. Defaults to `false`
+
+  * `-s|--separator` - character to use as separator
+    when listing archives
   """
 
 
-  @switches [destination: :string, elixir: :boolean]
-  @aliases [o: :destination, e: :elixir, l: :list]
+  @switches [destination: :string, elixir: :boolean, separator: :string]
+  @aliases [o: :destination, e: :elixir, s: :separator]
 
   @spec run(OptionParser.argv) :: :ok
   def run(argv) do
     {opts, _} = OptionParser.parse!(argv, aliases: @aliases, strict: @switches)
     destination = Mix.Archive.Build.Helpers.destination(opts)
-    Mix.Tasks.Archive.Build.Deps.build_archives(opts)
+    elixir = opts[:elixir] || false
+    separator = opts[:separator] || "\n"
 
     archive_name = Mix.Local.name_for(:archive, Mix.Project.config)
     archive_path = Path.join([destination, archive_name])
-    Mix.Tasks.Archive.Build.run(["-o", archive_path])
 
-    if opts[:elixir] do
-      Mix.Tasks.Archive.Build.Elixir.build_archives(opts)
+    deps_archives = Mix.Tasks.Archive.Build.Deps.list_archives(opts)
+    elixir_archives = if elixir do
+      Mix.Tasks.Archive.Build.Elixir.list_archives(opts)
+    else
+      []
     end
+
+    [[archive_path], deps_archives, elixir_archives]
+    |> Enum.concat
+    |> Enum.join(separator)
+    |> IO.puts
+
     :ok
   end
 end

@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.14.5">
-    <title>Mix.Tasks.Archive.Build.Elixir – MixTaskArchiveDeps v0.2.0</title>
+    <title>Mix.Tasks.Archive.Build.All.List – MixTaskArchiveDeps v0.2.0</title>
     <link rel="stylesheet" href="dist/app-a07cea761b.css" />
     
     <script src="dist/sidebar_items-62a83da759.js"></script>
@@ -59,10 +59,10 @@
 
       <h1>
         <small class="visible-xs">MixTaskArchiveDeps v0.2.0</small>
-        Mix.Tasks.Archive.Build.Elixir
+        Mix.Tasks.Archive.Build.All.List
         
         
-          <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L20" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.all.list.ex#L20" title="View Source" class="view-source" rel="help">
             <i class="icon-code"></i>
           </a>
         
@@ -70,17 +70,7 @@
 
       
         <section id="moduledoc">
-          <p>Builds each elixir project required by the project into
-archives according to the specification of the
-<a href="http://www.erlang.org/doc/man/code.html">Erlang Archive Format</a>.</p>
-<p>This task goal is to create packages. which could
-be used from Erlang environment without Elixir installation.</p>
-<p>The archives will be created in the “archives” subdirectory of
-the project build directory by default, unless an argument <code class="inline">-o</code> is
-provided with the directory name.</p>
-<p>The task will create archives for applications, referenced by the project
-and it’s dependencies, unless <code class="inline">-a</code> flag is specified.</p>
-<h2 id="module-command-line-options" class="section-heading">
+          <h2 id="module-command-line-options" class="section-heading">
   <a href="#module-command-line-options" class="hover-link"><i class="icon-link"></i></a>
   Command line options
 </h2>
@@ -89,8 +79,11 @@ and it’s dependencies, unless <code class="inline">-a</code> flag is specified
 <li><p><code class="inline">-o|--destination</code> - specifies output directory name.
 Defaults to BUILD_DIR/archives</p>
 </li>
-<li><p><code class="inline">-a|--all_applications</code> - specifies if all elixir applications
+<li><p><code class="inline">-e|--elixir</code> - specifies if all elixir applications
 should be archived. Defaults to <code class="inline">false</code></p>
+</li>
+<li><p><code class="inline">-s|--separator</code> - character to use as separator
+  when listing archives</p>
 </li>
 </ul>
 
@@ -113,18 +106,6 @@ should be archived. Defaults to <code class="inline">false</code></p>
       <a href="#functions">Functions</a>
     </h2>
     <div class="summary-row">
-  <div class="summary-signature">
-    <a href="#build_archives/1">build_archives(opts)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#list_archives/1">list_archives(opts)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
   <div class="summary-signature">
     <a href="#run/1">run(argv)</a>
   </div>
@@ -155,45 +136,7 @@ a list of command line args</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="build_archives/1">
-  
-  <div class="detail-header">
-    <a href="#build_archives/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">build_archives(opts)</span>
-    
-      <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L59" class="view-source" rel="help" title="View Source">
-       <i class="icon-code"></i>
-     </a>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="list_archives/1">
-  
-  <div class="detail-header">
-    <a href="#list_archives/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">list_archives(opts)</span>
-    
-      <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L69" class="view-source" rel="help" title="View Source">
-       <i class="icon-code"></i>
-     </a>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="run/1">
+          <div class="detail" id="run/1">
   
   <div class="detail-header">
     <a href="#run/1" class="detail-link" title="Link to this function">
@@ -201,7 +144,7 @@ a list of command line args</p>
     </a>
     <span class="signature">run(argv)</span>
     
-      <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.elixir.ex#L54" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hairyhum/mix_task_archive_deps/blob/master/lib/mix/tasks/archive/build.all.list.ex#L43" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     

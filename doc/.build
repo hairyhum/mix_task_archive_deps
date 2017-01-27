@@ -4,11 +4,12 @@ fonts/icomoon.eot
 fonts/icomoon.svg
 fonts/icomoon.ttf
 fonts/icomoon.woff
-dist/sidebar_items-f55dfa393f.js
+dist/sidebar_items-62a83da759.js
 api-reference.html
 index.html
 404.html
 Mix.Archive.Build.Helpers.html
 Mix.Tasks.Archive.Build.All.html
+Mix.Tasks.Archive.Build.All.List.html
 Mix.Tasks.Archive.Build.Deps.html
 Mix.Tasks.Archive.Build.Elixir.html

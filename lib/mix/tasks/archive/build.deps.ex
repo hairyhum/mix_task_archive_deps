@@ -49,20 +49,32 @@ defmodule Mix.Tasks.Archive.Build.Deps do
   end
 
   def build_archives(opts) do
+    list(opts)
+    |>  Enum.each(fn({app_dir, archive_path}) ->
+          Mix.Tasks.Archive.Build.run(["-i", app_dir, "-o", archive_path])
+        end)
+    :ok
+  end
+
+  def list_archives(opts) do
+    list(opts)
+    |> Enum.map(fn({_, archive_path}) -> archive_path end)
+  end
+
+  defp list(opts) do
     build_path = Mix.Project.build_path
     destination = Mix.Archive.Build.Helpers.destination(opts)
 
     ## Build delendencies archives
     deps = Mix.Dep.loaded(env: Mix.env)
-    Enum.each(deps, fn %Mix.Dep{app: app, status: status} ->
+    Enum.map(deps, fn(%Mix.Dep{app: app, status: status}) ->
       version = case status do
         {:ok, vsn} when vsn != nil -> vsn
         reason -> :erlang.error({:invalid_status, reason})
       end
       archive_path = Path.join([destination, "#{app}-#{version}.ez"])
       app_dir = Path.join([build_path, "lib", "#{app}"])
-      Mix.Tasks.Archive.Build.run(["-i", app_dir, "-o", archive_path])
+      {app_dir, archive_path}
     end)
-    :ok
   end
 end
