@@ -48,7 +48,7 @@ defmodule Mix.Tasks.Archive.Build.Elixir do
 
   @switches [destination: :string, all_applications: :boolean]
   @aliases [o: :destination, a: :all_applications]
-  @elixir_apps [:eex, :ex_unit, :iex, :logger, :mix]
+  @elixir_apps [:elixir, :eex, :ex_unit, :iex, :logger, :mix]
 
   @spec run(OptionParser.argv) :: :ok
   def run(argv) do
