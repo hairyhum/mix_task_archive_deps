@@ -41,6 +41,7 @@ defmodule Mix.Tasks.Archive.Build.All.List do
 
   @spec run(OptionParser.argv) :: :ok
   def run(argv) do
+    Mix.Tasks.Loadpaths.run([])
     {opts, _} = OptionParser.parse!(argv, aliases: @aliases, strict: @switches)
     destination = Mix.Archive.Build.Helpers.destination(opts)
     elixir = opts[:elixir] || false
@@ -50,6 +51,7 @@ defmodule Mix.Tasks.Archive.Build.All.List do
     archive_path = Path.join([destination, archive_name])
 
     deps_archives = Mix.Tasks.Archive.Build.Deps.list_archives(opts)
+
     elixir_archives = if elixir do
       Mix.Tasks.Archive.Build.Elixir.list_archives(opts)
     else

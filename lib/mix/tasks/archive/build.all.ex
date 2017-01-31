@@ -55,6 +55,7 @@ defmodule Mix.Tasks.Archive.Build.All do
 
   @spec run(OptionParser.argv) :: :ok
   def run(argv) do
+    Mix.Tasks.Loadpaths.run([])
     {opts, _} = OptionParser.parse!(argv, aliases: @aliases, strict: @switches)
     destination = Mix.Archive.Build.Helpers.destination(opts)
     Mix.Tasks.Archive.Build.Deps.build_archives(opts)
