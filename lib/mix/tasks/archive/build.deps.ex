@@ -70,7 +70,7 @@ defmodule Mix.Tasks.Archive.Build.Deps do
 
     ## Build delendencies archives
     Mix.Dep.loaded(env: Mix.env)
-    |>  Enum.filter(fn(%Mix.Dep{app: app}) -> Enum.member?(skip, app) end)
+    |>  Enum.filter(fn(%Mix.Dep{app: app}) -> not Enum.member?(skip, app) end)
     |>  Enum.map(fn(%Mix.Dep{app: app, status: status}) ->
       version = case status do
         {:ok, vsn} when vsn != nil -> vsn
