@@ -32,10 +32,15 @@ defmodule Mix.Tasks.Archive.Build.All.List do
 
   * `-s|--separator` - character to use as separator
     when listing archives
+
+  * `--skip` - a space-separated list of dependencies to skip
   """
 
 
-  @switches [destination: :string, elixir: :boolean, separator: :string]
+  @switches [destination: :string,
+             elixir: :boolean,
+             separator: :string,
+             skip: :string]
   @aliases [o: :destination, e: :elixir, s: :separator]
 
   @spec run(OptionParser.argv) :: :ok

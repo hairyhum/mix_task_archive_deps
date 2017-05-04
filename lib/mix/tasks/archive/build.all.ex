@@ -46,10 +46,12 @@ defmodule Mix.Tasks.Archive.Build.All do
 
   * `-e|--elixir` - specifies if all elixir applications
       should be archived. Defaults to `false`
+
+  * `--skip` - a space-separated list of dependencies to skip
   """
 
 
-  @switches [destination: :string, elixir: :boolean]
+  @switches [destination: :string, elixir: :boolean, skip: :string]
   @aliases [o: :destination, e: :elixir, l: :list]
 
   @spec run(OptionParser.argv) :: :ok

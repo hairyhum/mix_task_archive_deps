@@ -19,4 +19,7 @@ defmodule Mix.Archive.Build.Helpers do
   def destination(opts) do
     opts[:destination] || Path.join(Mix.Project.build_path, "archives")
   end
+  def skipped_apps(opts) do
+    (opts[:skip] || "") |> String.split(" ") |> Enum.map(&String.to_atom/1)
+  end
 end

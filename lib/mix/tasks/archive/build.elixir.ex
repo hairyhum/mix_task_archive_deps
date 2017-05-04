@@ -19,6 +19,8 @@
 defmodule Mix.Tasks.Archive.Build.Elixir do
   use Mix.Task
 
+  alias  Mix.Archive.Build.Helpers, as: Helpers
+
   @shortdoc "Archives elixir applications referenced by the project into .ez files"
 
   @moduledoc """
@@ -43,9 +45,11 @@ defmodule Mix.Tasks.Archive.Build.Elixir do
 
   * `-a|--all_applications` - specifies if all elixir applications
       should be archived. Defaults to `false`
+
+  * `--skip` - a space-separated list of dependencies to skip
   """
 
-  @switches [destination: :string, all_applications: :boolean]
+  @switches [destination: :string, all_applications: :boolean, skip: :string]
   @aliases [o: :destination, a: :all_applications]
   @elixir_apps [:elixir, :eex, :ex_unit, :iex, :logger, :mix]
 
@@ -72,10 +76,12 @@ defmodule Mix.Tasks.Archive.Build.Elixir do
   end
 
   defp list(opts) do
-    destination = Mix.Archive.Build.Helpers.destination(opts)
+    destination = Helpers.destination(opts)
     all_applications = opts[:all_applications] || false
+    skip = Helpers.skipped_apps(opts)
 
     get_required_apps(all_applications)
+    |>  Enum.filter(fn(elixir_app) -> not Enum.member?(skip, elixir_app) end)
     |>  Enum.map(fn(elixir_app) ->
           lib_dir = :code.lib_dir(elixir_app)
           archive_name = "#{elixir_app}-#{Application.spec(elixir_app, :vsn)}.ez"
